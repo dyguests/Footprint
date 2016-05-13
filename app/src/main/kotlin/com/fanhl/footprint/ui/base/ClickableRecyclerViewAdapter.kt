@@ -51,11 +51,7 @@ abstract class ClickableRecyclerViewAdapter<CVH : ClickableRecyclerViewAdapter.C
     }
 
     override fun onBindViewHolder(holder: CVH, position: Int) {
-        holder.itemView.setOnClickListener {
-            if (itemClickListener != null) {
-                itemClickListener!!.onItemClick(position, holder)
-            }
-        }
+        holder.itemView.setOnClickListener { itemClickListener?.onItemClick(position, holder) }
         holder.itemView.setOnLongClickListener { itemLongClickListener != null && itemLongClickListener!!.onItemLongClick(position, holder) }
     }
 
