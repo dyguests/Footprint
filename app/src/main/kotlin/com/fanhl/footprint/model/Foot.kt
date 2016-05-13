@@ -1,5 +1,3 @@
 package com.fanhl.footprint.model
 
-class Foot {
-
-}
+data class Foot(val id: Int = 1)

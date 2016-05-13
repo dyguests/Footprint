@@ -13,7 +13,7 @@ class RecordActivity : AppCompatActivity() {
 
     companion object {
         fun launch(context: Context) {
-            context.startActivity(Intent(context, RecordActivity.javaClass))
+            context.startActivity(Intent(context, RecordActivity::class.java))
         }
     }
 
