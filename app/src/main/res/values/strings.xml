@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Footprint</string>
     <string name="action_settings">Settings</string>
+    <string name="get_speed_and_orientation">Get speed and orientation</string>
+    <string name="speed">Speed</string>
+    <string name="orientation">Orientation</string>
 </resources>

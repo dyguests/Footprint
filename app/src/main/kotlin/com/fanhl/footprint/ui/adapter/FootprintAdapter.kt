@@ -23,9 +23,7 @@ class FootprintAdapter(context: Context, recyclerView: RecyclerView) : Clickable
         super.onBindViewHolder(holder, position)
     }
 
-    override fun getItemCount(): Int {
-        throw UnsupportedOperationException()
-    }
+    override fun getItemCount() = 0
 
     class ViewHolder(itemView: View) : ClickableViewHolder(itemView)
 }
