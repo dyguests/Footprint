@@ -35,7 +35,13 @@ class RecordActivity : AppCompatActivity() {
         sensor_btn.setOnClickListener {
             val orientation = orientationSensor.getOrientation()
 
-            orientation_tv.text = "(${orientation[0]},${orientation[1]},${orientation[2]})"
+            val (currentLocation, lastLocation) = locationSensor.getLocation()
+            location_tv.text = "${getString(R.string.location)}:$currentLocation"
+            velocity_tv.text = "Velocity:"
+            orientation_tv.text = "Orientation(${orientation[0]},${orientation[1]},${orientation[2]})"
+            acceleration_tv.text = "Acceleration:"
+            angular_velocity_tv.text = "Acceleration:"
+            centrifugal_tv.text = "Acceleration:"
         }
     }
 
