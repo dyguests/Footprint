@@ -37,11 +37,11 @@ class RecordActivity : AppCompatActivity() {
 
             val (currentLocation, lastLocation) = locationSensor.getLocation()
             location_tv.text = "${getString(R.string.location)}:$currentLocation"
-            velocity_tv.text = "Velocity:"
-            orientation_tv.text = "Orientation(${orientation[0]},${orientation[1]},${orientation[2]})"
-            acceleration_tv.text = "Acceleration:"
-            angular_velocity_tv.text = "Acceleration:"
-            centrifugal_tv.text = "Acceleration:"
+            velocity_tv.text = "${getString(R.string.velocity)}:"
+            orientation_tv.text = "${getString(R.string.orientation)}:(${orientation[0]},${orientation[1]},${orientation[2]})"
+            acceleration_tv.text = "${getString(R.string.acceleration)}:"
+            angular_velocity_tv.text = "${getString(R.string.angular_velocity)}:"
+            centrifugal_tv.text = "${getString(R.string.centrifugal)}:"
         }
     }
 
