@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 
 import com.fanhl.footprint.R
 import com.fanhl.footprint.model.Foot
+import com.fanhl.footprint.service.FootprintService
 import com.fanhl.footprint.util.sensor.LocationSensor
 import com.fanhl.footprint.util.sensor.OrientationSensor
 import kotlinx.android.synthetic.main.activity_record.*
@@ -32,8 +33,8 @@ class RecordActivity : AppCompatActivity() {
     }
 
     private fun assignViews() {
-        start_btn.setOnClickListener {}
-        stop_btn.setOnClickListener {}
+        start_btn.setOnClickListener { FootprintService.start(this@RecordActivity) }
+        stop_btn.setOnClickListener { FootprintService.stop(this@RecordActivity) }
 
         sensor_btn.setOnClickListener {
             val orientation = orientationSensor.getOrientation()
@@ -50,6 +51,7 @@ class RecordActivity : AppCompatActivity() {
 
     private fun initData() {
         locationSensor = LocationSensor(this)
+        locationSensor.enable()
 
         orientationSensor = OrientationSensor(this)
         orientationSensor.enable()

@@ -16,47 +16,54 @@ class LocationSensor(context: Context) {
     val TAG = LocationSensor::class.java.name
 
     /** 获取系统LocationManager服务*/
-    val locationManager: LocationManager
+    var locationManager: LocationManager? = null
     /** 从GPS获取最近的定位信息*/
-    var currentLocation: Location
-    var lastLocation: Location
+    var currentLocation: Location? = null
+    var lastLocation: Location? = null
+
+    private val locationListener = object : LocationListener {
+
+        override fun onLocationChanged(location: Location) {
+            Log.d(TAG, location.toString())
+            // 当GPS定位信息发生改变时，更新位置
+            //updateView(location);
+            lastLocation = currentLocation
+            currentLocation = location
+        }
+
+        override fun onProviderDisabled(provider: String) {
+            //updateView(null);
+        }
+
+        override fun onProviderEnabled(provider: String) {
+            // 当GPS LocationProvider可用时，更新位置
+            //updateView(locationManager.getLastKnownLocation(provider));
+            lastLocation = currentLocation
+            currentLocation = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        }
+
+        override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
+        }
+    }
 
     init {
         locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    }
 
-        currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        lastLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+    fun enable() {
+        currentLocation = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        lastLocation = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
         // 设置每秒获取一次GPS的定位信息
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                Constant.LOCATION_INTERVAL, Constant.LOCATION_STABILIZER_DISTANCE, object : LocationListener {
+        locationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                Constant.LOCATION_INTERVAL, Constant.LOCATION_STABILIZER_DISTANCE, locationListener)
+    }
 
-            override fun onLocationChanged(location: Location) {
-                Log.d(TAG, location.toString())
-                // 当GPS定位信息发生改变时，更新位置
-                //updateView(location);
-                lastLocation = currentLocation
-                currentLocation = location
-            }
-
-            override fun onProviderDisabled(provider: String) {
-                //updateView(null);
-            }
-
-            override fun onProviderEnabled(provider: String) {
-                // 当GPS LocationProvider可用时，更新位置
-                //updateView(locationManager.getLastKnownLocation(provider));
-                lastLocation = currentLocation
-                currentLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-            }
-
-            override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
-            }
-        })
-
+    fun unable() {
+        locationManager?.removeUpdates(locationListener);
     }
 
     fun getLocation() = Location2(currentLocation, lastLocation)
 
-    data class Location2(val currentLocation: Location, val lastLocation: Location)
+    data class Location2(val currentLocation: Location?, val lastLocation: Location?)
 }
