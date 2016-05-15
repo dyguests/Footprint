@@ -8,4 +8,6 @@
     <string name="acceleration">Acceleration</string>
     <string name="angular_velocity">Angular velocity</string>
     <string name="centrifugal">Centrifugal</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
 </resources>

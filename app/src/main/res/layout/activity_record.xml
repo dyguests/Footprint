@@ -11,6 +11,26 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.fanhl.footprint.ui.RecordActivity">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/start"
+            android:id="@+id/start_btn"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/stop"
+            android:id="@+id/stop_btn"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
     <Button
         android:id="@+id/sensor_btn"
         android:layout_width="match_parent"

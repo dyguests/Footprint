@@ -32,6 +32,9 @@ class RecordActivity : AppCompatActivity() {
     }
 
     private fun assignViews() {
+        start_btn.setOnClickListener {}
+        stop_btn.setOnClickListener {}
+
         sensor_btn.setOnClickListener {
             val orientation = orientationSensor.getOrientation()
 
