@@ -30,6 +30,7 @@ class Recorder {
 
     fun save() {
         Log.d(TAG, "save")
+        Log.d(TAG, list.toString())
     }
 
     /**计算速度*/
