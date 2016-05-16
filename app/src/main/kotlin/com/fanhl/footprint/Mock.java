@@ -1,72 +1,40 @@
 package com.fanhl.footprint;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-
-import com.fanhl.footprint.model.Foot;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by fanhl on 16/5/13.
  */
 @Deprecated
-public class Mock {
-    public static final String s = "1";
-    public static final String TAG = Mock.class.getSimpleName();
-    void a(Context context) {
-        // 获取系统LocationManager服务
-        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-        // 从GPS获取最近的定位信息
-        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+public class Mock implements Parcelable {
+    Location location;
+    Integer  i;
+    Long     l;
+    Float    f;
 
+    @Override public int describeContents() { return 0; }
 
-        // 设置每2秒获取一次GPS的定位信息
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                2000, 8, new LocationListener() {
-
-                    @Override
-                    public void onLocationChanged(Location location) {
-                        // 当GPS定位信息发生改变时，更新位置
-                        //updateView(location);
-                    }
-
-                    @Override
-                    public void onProviderDisabled(String provider) {
-                        //updateView(null);
-                    }
-
-                    @Override
-                    public void onProviderEnabled(String provider) {
-                        // 当GPS LocationProvider可用时，更新位置
-                        //updateView(locationManager.getLastKnownLocation(provider));
-                    }
-
-                    @Override
-                    public void onStatusChanged(String provider, int status, Bundle extras) {
-                    }
-                });
+    @Override public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.location, flags);
+        dest.writeValue(this.i);
+        dest.writeValue(this.l);
+        dest.writeValue(this.f);
     }
 
-    void b(){
-        List<Foot> list = new ArrayList<>();
+    public Mock() {}
+
+    protected Mock(Parcel in) {
+        this.location = in.readParcelable(Location.class.getClassLoader());
+        this.i = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.l = (Long) in.readValue(Long.class.getClassLoader());
+        this.f = (Float) in.readValue(Float.class.getClassLoader());
     }
+
+    public static final Parcelable.Creator<Mock> CREATOR = new Parcelable.Creator<Mock>() {
+        @Override public Mock createFromParcel(Parcel source) {return new Mock(source);}
+
+        @Override public Mock[] newArray(int size) {return new Mock[size];}
+    };
 }

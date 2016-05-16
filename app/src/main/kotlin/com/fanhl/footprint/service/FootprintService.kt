@@ -86,7 +86,7 @@ class FootprintService : Service() {
     }
 
     private fun saveData() {
-        recorder?.save()
+        recorder?.save(this)
     }
 
     private fun startTimer() {
@@ -107,7 +107,6 @@ class FootprintService : Service() {
         val (currentLocation, lastLocation) = locationSensor.getLocation()
         val orientation = orientationSensor.getOrientation()
 
-        Log.d(TAG, "recordFoot")
         recorder?.add(currentLocation, orientation)
     }
 }

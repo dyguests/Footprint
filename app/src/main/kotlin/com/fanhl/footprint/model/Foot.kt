@@ -11,4 +11,6 @@ data class Foot(
         var acceleration: Float,
         var angularVelocity: Float,
         var centrifugal: Float
-)
+) {
+    override fun toString() = "$id,$time,(${location?.latitude},${location?.longitude}),$velocity,$angular,$acceleration,$angularVelocity,$centrifugal"
+}

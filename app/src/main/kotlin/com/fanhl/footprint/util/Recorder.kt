@@ -1,9 +1,11 @@
 package com.fanhl.footprint.util
 
+import android.content.Context
 import android.location.Location
 import android.util.Log
 import com.fanhl.footprint.constant.Constant
 import com.fanhl.footprint.model.Foot
+import com.fanhl.footprint.service.FootprintService
 import java.util.*
 
 /**
@@ -25,13 +27,14 @@ class Recorder {
         val angularVelocity = computeAngularVelocity(angular)
         val centrifugal = computeCentrifugal(angularVelocity, velocity)
 
-        list += Foot(id, time, location, velocity, angular, acceleration, angularVelocity, centrifugal)
+        val foot = Foot(id, time, location, velocity, angular, acceleration, angularVelocity, centrifugal)
+        Log.d(FootprintService.TAG, "recordFoot:$foot")
+        list += foot
     }
 
-    fun save() {
-        Log.d(TAG, "save")
-        Log.d(TAG, list.toString())
-        FileManager.save(list)
+    fun save(context: Context) {
+        Log.d(TAG, "save()")
+        FileManager.save(context, list)
     }
 
     /**计算速度*/
@@ -44,13 +47,13 @@ class Recorder {
 
     private fun computeAcceleration(velocity: Float): Float {
         if (list.isEmpty()) return 0f;
-        val lastVelocity = list[-1].velocity
+        val lastVelocity = list[list.size - 1].velocity
         return (velocity - lastVelocity) / Constant.INTERVAL_SECONDS
     }
 
     private fun computeAngularVelocity(angular: Float): Float {
         if (list.isEmpty()) return 0f;
-        val lastAngular = list[-1].angular
+        val lastAngular = list[list.size - 1].angular
         return (angular - lastAngular) / Constant.INTERVAL_SECONDS
     }
 
