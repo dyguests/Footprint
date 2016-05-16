@@ -32,14 +32,26 @@ class RecordActivity : AppCompatActivity() {
         initData()
     }
 
+    override fun onResume() {
+        super.onResume()
+        locationSensor.enable()
+        orientationSensor.enable()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        locationSensor.disable()
+        orientationSensor.disable()
+    }
+
     private fun assignViews() {
         start_btn.setOnClickListener { FootprintService.start(this@RecordActivity) }
         stop_btn.setOnClickListener { FootprintService.stop(this@RecordActivity) }
 
         sensor_btn.setOnClickListener {
+            val (currentLocation, lastLocation) = locationSensor.getLocation()
             val orientation = orientationSensor.getOrientation()
 
-            val (currentLocation, lastLocation) = locationSensor.getLocation()
             location_tv.text = "${getString(R.string.location)}:$currentLocation"
             velocity_tv.text = "${getString(R.string.velocity)}:"
             orientation_tv.text = "${getString(R.string.orientation)}:(${orientation[0]},${orientation[1]},${orientation[2]})"
@@ -51,9 +63,6 @@ class RecordActivity : AppCompatActivity() {
 
     private fun initData() {
         locationSensor = LocationSensor(this)
-        locationSensor.enable()
-
         orientationSensor = OrientationSensor(this)
-        orientationSensor.enable()
     }
 }

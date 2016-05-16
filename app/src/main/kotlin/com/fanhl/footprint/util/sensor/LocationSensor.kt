@@ -59,7 +59,7 @@ class LocationSensor(context: Context) {
                 Constant.LOCATION_INTERVAL, Constant.LOCATION_STABILIZER_DISTANCE, locationListener)
     }
 
-    fun unable() {
+    fun disable() {
         locationManager?.removeUpdates(locationListener);
     }
 

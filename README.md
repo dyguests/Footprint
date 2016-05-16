@@ -2,6 +2,12 @@
 
 A app for record footprint.
 
+**Point**
+
+1.Location by GPS,not by Network.
+
+2.Get speed by distance/time.
+
 # Program Logic
 
 input:

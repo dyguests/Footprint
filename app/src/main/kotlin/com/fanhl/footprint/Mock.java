@@ -3,6 +3,7 @@ package com.fanhl.footprint;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -58,5 +59,9 @@ public class Mock {
                     public void onStatusChanged(String provider, int status, Bundle extras) {
                     }
                 });
+    }
+
+    void b(){
+
     }
 }
