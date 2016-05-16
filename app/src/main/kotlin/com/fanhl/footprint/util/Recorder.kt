@@ -31,6 +31,7 @@ class Recorder {
     fun save() {
         Log.d(TAG, "save")
         Log.d(TAG, list.toString())
+        FileManager.save(list)
     }
 
     /**计算速度*/
