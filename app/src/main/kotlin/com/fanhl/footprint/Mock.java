@@ -10,6 +10,11 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
+import com.fanhl.footprint.model.Foot;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by fanhl on 16/5/13.
  */
@@ -62,6 +67,6 @@ public class Mock {
     }
 
     void b(){
-
+        List<Foot> list = new ArrayList<>();
     }
 }

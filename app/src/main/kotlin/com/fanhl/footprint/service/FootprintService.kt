@@ -44,13 +44,21 @@ class FootprintService : Service() {
     /**足迹记录器*/
     var recorder: Recorder? = null
 
-    init {
+    override fun onCreate() {
+        super.onCreate()
         locationSensor = LocationSensor(this)
         orientationSensor = OrientationSensor(this)
     }
 
-    override fun onBind(intent: Intent): IBinder? {
-        return null
+    override fun onDestroy() {
+        super.onDestroy()
+
+        timer?.cancel()
+
+        locationSensor.disable()
+        orientationSensor.disable()
+
+        saveData()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -62,14 +70,11 @@ class FootprintService : Service() {
         return result
     }
 
+    override fun onBind(intent: Intent): IBinder? {
+        return null
+    }
+
     override fun onUnbind(intent: Intent?): Boolean {
-        timer?.cancel()
-
-        locationSensor.disable()
-        orientationSensor.disable()
-
-        saveData()
-
         return super.onUnbind(intent)
     }
 
@@ -81,7 +86,7 @@ class FootprintService : Service() {
     }
 
     private fun saveData() {
-
+        recorder?.save()
     }
 
     private fun startTimer() {
@@ -103,7 +108,7 @@ class FootprintService : Service() {
         val orientation = orientationSensor.getOrientation()
 
         Log.d(TAG, "recordFoot")
-
+        recorder?.add(currentLocation, orientation)
     }
 }
 
