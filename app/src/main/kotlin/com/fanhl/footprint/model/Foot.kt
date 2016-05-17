@@ -1,6 +1,7 @@
 package com.fanhl.footprint.model
 
 import android.location.Location
+import com.fanhl.footprint.util.DateUtil
 
 data class Foot(
         val id: Int,
@@ -12,5 +13,5 @@ data class Foot(
         var angularVelocity: Float,
         var centrifugal: Float
 ) {
-    override fun toString() = "$id,$time,(${location?.latitude},${location?.longitude}),$velocity,$angular,$acceleration,$angularVelocity,$centrifugal"
+    override fun toString() = "$id,${DateUtil.date2long(DateUtil.second2date(time))},(${location?.latitude},${location?.longitude}),$velocity,$angular,$acceleration,$angularVelocity,$centrifugal"
 }

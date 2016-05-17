@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     private fun assignViews() {
         fab.setOnClickListener { RecordActivity.launch(this@MainActivity) }
 
+//        swi
         recycler_view.adapter = adapter
     }
 

@@ -42,6 +42,7 @@ class Recorder {
         if (location == null) return 0f;
         if (list.isEmpty()) return 0f;
         val lastLocation = list[0].location ?: return 0f
+        Log.d(TAG, "location.distanceTo(lastLocation):${location.distanceTo(lastLocation)}")
         return location.distanceTo(lastLocation) / Constant.INTERVAL_SECONDS
     }
 
