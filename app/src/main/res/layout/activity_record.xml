@@ -32,12 +32,25 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/sensor_btn"
+    <!--<Button-->
+        <!--android:id="@+id/sensor_btn"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/get_speed_and_orientation"/>-->
+
+    <TextView
+        android:id="@+id/id_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/get_speed_and_orientation"/>
+        android:text="@string/id"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 
+    <TextView
+        android:id="@+id/time_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/time"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
     <TextView
         android:id="@+id/location_tv"
         android:layout_width="match_parent"
@@ -52,27 +65,27 @@
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     <TextView
-        android:id="@+id/orientation_tv"
+        android:id="@+id/angular_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/orientation"
+        android:text="@string/angular"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
-    <!--<TextView-->
-        <!--android:id="@+id/acceleration_tv"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/acceleration"-->
-        <!--android:textAppearance="?android:attr/textAppearanceLarge"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/angular_velocity_tv"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/angular_velocity"-->
-        <!--android:textAppearance="?android:attr/textAppearanceLarge"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/centrifugal_tv"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/centrifugal"-->
-        <!--android:textAppearance="?android:attr/textAppearanceLarge"/>-->
+    <TextView
+        android:id="@+id/acceleration_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/acceleration"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+    <TextView
+        android:id="@+id/angular_velocity_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/angular_velocity"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+    <TextView
+        android:id="@+id/centrifugal_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/centrifugal"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
 </LinearLayout>

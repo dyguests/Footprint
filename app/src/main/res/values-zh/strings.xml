@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">足迹</string>
+    <string name="acceleration">加速度</string>
+    <string name="action_settings">设置</string>
+    <string name="angular">角度</string>
+    <string name="angular_velocity">角速度</string>
+    <string name="centrifugal">离心力</string>
+    <string name="get_speed_and_orientation">取得速度与方向</string>
+    <string name="id">编号</string>
+    <string name="location">位置</string>
+    <string name="start">开始</string>
+    <string name="stop">结束</string>
+    <string name="time">时间</string>
+    <string name="velocity">速度</string>
+</resources>

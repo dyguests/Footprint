@@ -6,6 +6,7 @@ import android.util.Log
 import com.fanhl.footprint.constant.Constant
 import com.fanhl.footprint.model.Foot
 import com.fanhl.footprint.service.FootprintService
+import org.greenrobot.eventbus.EventBus
 import java.util.*
 
 /**
@@ -28,7 +29,10 @@ class Recorder {
         val centrifugal = computeCentrifugal(angularVelocity, velocity)
 
         val foot = Foot(id, time, location, velocity, angular, acceleration, angularVelocity, centrifugal)
-        Log.d(FootprintService.TAG, "recordFoot:$foot")
+
+        Log.d(FootprintService.TAG, "${foot.toStringCn()}")
+        EventBus.getDefault().post(foot)
+
         list += foot
     }
 
