@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         assignViews()
+        initData()
+        refreshData()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -45,6 +47,14 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener { RecordActivity.launch(this@MainActivity) }
 
         recycler_view.adapter = adapter
+    }
+
+    private fun initData() {
+
+    }
+
+    private fun refreshData() {
+
     }
 }
 
