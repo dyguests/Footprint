@@ -45,8 +45,22 @@ class RecordActivity : AppCompatActivity() {
     }
 
     private fun assignViews() {
-        start_btn.setOnClickListener { FootprintService.start(this@RecordActivity) }
-        stop_btn.setOnClickListener { FootprintService.stop(this@RecordActivity) }
+        if(FootprintService.isActive){
+            start_btn.isEnabled = false
+            stop_btn.isEnabled = true
+        }
+
+
+        start_btn.setOnClickListener {
+            FootprintService.start(this@RecordActivity)
+            start_btn.isEnabled = false
+            stop_btn.isEnabled = true
+        }
+        stop_btn.setOnClickListener {
+            FootprintService.stop(this@RecordActivity)
+            start_btn.isEnabled = true
+            stop_btn.isEnabled = false
+        }
 
         sensor_btn.setOnClickListener {
             val (currentLocation, lastLocation) = locationSensor.getLocation()
