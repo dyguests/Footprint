@@ -11,32 +11,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.fanhl.footprint.ui.RecordActivity">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <ToggleButton
+        android:id="@+id/record_tb"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/start"
-            android:id="@+id/start_btn"
-            android:layout_weight="1"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/stop"
-            android:enabled="false"
-            android:id="@+id/stop_btn"
-            android:layout_weight="1"/>
-    </LinearLayout>
-
-    <!--<Button-->
-        <!--android:id="@+id/sensor_btn"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/get_speed_and_orientation"/>-->
+        android:layout_height="wrap_content"
+        android:textOff="@string/start_record"
+        android:textOn="@string/stop_record"/>
 
     <TextView
         android:id="@+id/id_tv"
@@ -51,12 +31,14 @@
         android:layout_height="wrap_content"
         android:text="@string/time"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
+
     <TextView
         android:id="@+id/location_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/location"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
+
     <TextView
         android:id="@+id/velocity_tv"
         android:layout_width="match_parent"
@@ -70,18 +52,21 @@
         android:layout_height="wrap_content"
         android:text="@string/angular"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
+
     <TextView
         android:id="@+id/acceleration_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/acceleration"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
+
     <TextView
         android:id="@+id/angular_velocity_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/angular_velocity"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
+
     <TextView
         android:id="@+id/centrifugal_tv"
         android:layout_width="match_parent"

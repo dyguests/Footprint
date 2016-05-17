@@ -50,34 +50,12 @@ class RecordActivity : BaseActivity() {
     }
 
     private fun assignViews() {
-        if (FootprintService.isActive) {
-            start_btn.isEnabled = false
-            stop_btn.isEnabled = true
-        }
+        if (FootprintService.isActive) record_tb.isChecked = true
 
-
-        start_btn.setOnClickListener {
-            FootprintService.start(this@RecordActivity)
-            start_btn.isEnabled = false
-            stop_btn.isEnabled = true
+        record_tb.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) FootprintService.start(this@RecordActivity)
+            else FootprintService.stop(this@RecordActivity)
         }
-        stop_btn.setOnClickListener {
-            FootprintService.stop(this@RecordActivity)
-            start_btn.isEnabled = true
-            stop_btn.isEnabled = false
-        }
-
-//        sensor_btn.setOnClickListener {
-//            val (currentLocation, lastLocation) = locationSensor.getLocation()
-//            val orientation = orientationSensor.getOrientation()
-//
-//            location_tv.text = "${getString(R.string.location)}:$currentLocation"
-//            velocity_tv.text = "${getString(R.string.velocity)}:${currentLocation?.speed}"
-//            orientation_tv.text = "${getString(R.string.orientation)}:(${orientation[0]},${orientation[1]},${orientation[2]})"
-//            acceleration_tv.text = "${getString(R.string.acceleration)}:"
-//            angular_velocity_tv.text = "${getString(R.string.angular_velocity)}:"
-//            centrifugal_tv.text = "${getString(R.string.centrifugal)}:"
-//        }
     }
 
     private fun initData() {
