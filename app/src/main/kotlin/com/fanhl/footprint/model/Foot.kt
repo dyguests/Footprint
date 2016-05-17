@@ -13,5 +13,5 @@ data class Foot(
         var angularVelocity: Float,
         var centrifugal: Float
 ) {
-    override fun toString() = "$id,${DateUtil.date2long(DateUtil.second2date(time))},(${location?.latitude},${location?.longitude}),$velocity,$angular,$acceleration,$angularVelocity,$centrifugal"
+    override fun toString() = "$id,${DateUtil.date2long(DateUtil.second2date(time))},${location?.latitude},${location?.longitude},$velocity,$angular,$acceleration,$angularVelocity,$centrifugal"
 }

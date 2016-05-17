@@ -45,7 +45,7 @@ class RecordActivity : AppCompatActivity() {
     }
 
     private fun assignViews() {
-        if(FootprintService.isActive){
+        if (FootprintService.isActive) {
             start_btn.isEnabled = false
             stop_btn.isEnabled = true
         }
@@ -67,11 +67,11 @@ class RecordActivity : AppCompatActivity() {
             val orientation = orientationSensor.getOrientation()
 
             location_tv.text = "${getString(R.string.location)}:$currentLocation"
-            velocity_tv.text = "${getString(R.string.velocity)}:"
+            velocity_tv.text = "${getString(R.string.velocity)}:${currentLocation?.speed}"
             orientation_tv.text = "${getString(R.string.orientation)}:(${orientation[0]},${orientation[1]},${orientation[2]})"
-            acceleration_tv.text = "${getString(R.string.acceleration)}:"
-            angular_velocity_tv.text = "${getString(R.string.angular_velocity)}:"
-            centrifugal_tv.text = "${getString(R.string.centrifugal)}:"
+//            acceleration_tv.text = "${getString(R.string.acceleration)}:"
+//            angular_velocity_tv.text = "${getString(R.string.angular_velocity)}:"
+//            centrifugal_tv.text = "${getString(R.string.centrifugal)}:"
         }
     }
 

@@ -10,8 +10,8 @@ android {
         applicationId "com.fanhl.footprint"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 10
+        versionName "0.1.4"
     }
     buildTypes {
         release {
