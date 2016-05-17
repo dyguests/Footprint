@@ -10,7 +10,7 @@
     <string name="centrifugal">Centrifugal</string>
     <string name="id">Id</string>
     <string name="time">Time</string>
-    <string name="analysis">Analysis</string>
+    <string name="details">Details</string>
     <string name="start_record">Start record</string>
     <string name="stop_record">Stop record</string>
 </resources>

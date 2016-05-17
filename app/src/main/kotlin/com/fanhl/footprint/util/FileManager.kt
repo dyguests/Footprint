@@ -58,11 +58,11 @@ object FileManager {
     }
 
     fun getRecords(context: Context) = getRecordDir(context).listFiles()
-            .filter {
-                it.isFile && it.name.endsWith(RECORD_EXTENSION_NAME)
-            }
+            .filter { it.isFile && it.name.endsWith(RECORD_EXTENSION_NAME) }
+            .map { it.name }
+            .reversed()
             .mapIndexed {
-                index, file ->
-                Record(index + 1, file.name)
+                index, name ->
+                Record(index + 1, name)
             }
 }

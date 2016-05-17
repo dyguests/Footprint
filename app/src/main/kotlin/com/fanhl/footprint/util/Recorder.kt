@@ -4,6 +4,7 @@ import android.content.Context
 import android.location.Location
 import android.util.Log
 import com.fanhl.footprint.constant.Constant
+import com.fanhl.footprint.core.AnalysisUtil
 import com.fanhl.footprint.model.Foot
 import com.fanhl.footprint.service.FootprintService
 import org.greenrobot.eventbus.EventBus
@@ -27,6 +28,9 @@ class Recorder {
         val acceleration = computeAcceleration(velocity)
         val angularVelocity = computeAngularVelocity(angular)
         val centrifugal = computeCentrifugal(angularVelocity, velocity)
+        val isSharpAcceleration = AnalysisUtil.isSharpAcceleration(acceleration)
+        val isSharpDeceleration = AnalysisUtil.isSharpDeceleration(acceleration)
+        val isSharpTurn = AnalysisUtil.isSharpTurn(centrifugal)
 
         val foot = Foot(id, time, location, velocity, angular, acceleration, angularVelocity, centrifugal)
 

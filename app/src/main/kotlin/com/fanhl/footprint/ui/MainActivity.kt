@@ -1,10 +1,13 @@
 package com.fanhl.footprint.ui
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import com.fanhl.footprint.R
+import com.fanhl.footprint.model.Record
 import com.fanhl.footprint.ui.adapter.FootprintAdapter
 import com.fanhl.footprint.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -52,6 +55,12 @@ class MainActivity : BaseActivity() {
 
         swipe_refresh_layout.setOnRefreshListener { refreshData() }
         recycler_view.adapter = adapter
+
+        adapter.onItemClickListener = object : FootprintAdapter.OnItemClickListener {
+            override fun onDetailsClick(button: Button, position: Int, data: Record) {
+
+            }
+        }
     }
 
     private fun initData() {
