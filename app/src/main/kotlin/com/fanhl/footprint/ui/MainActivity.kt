@@ -1,7 +1,6 @@
 package com.fanhl.footprint.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.fanhl.footprint.R
@@ -9,7 +8,8 @@ import com.fanhl.footprint.ui.adapter.FootprintAdapter
 import com.fanhl.footprint.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import rx.lang.kotlin.observable
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 class MainActivity : BaseActivity() {
 
@@ -58,7 +58,16 @@ class MainActivity : BaseActivity() {
 
     private fun refreshData() {
         if (!swipe_refresh_layout.isRefreshing) swipe_refresh_layout.isRefreshing = true
+        app.client.fileService.getRecords()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
 
+                }, {
+                    swipe_refresh_layout.isRefreshing = false
+                }, {
+                    swipe_refresh_layout.isRefreshing = false
+                })
     }
 }
 

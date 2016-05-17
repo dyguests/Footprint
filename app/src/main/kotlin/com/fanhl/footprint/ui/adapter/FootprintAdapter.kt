@@ -2,29 +2,31 @@ package com.fanhl.footprint.ui.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.fanhl.footprint.model.Foot
-import com.fanhl.footprint.ui.base.ClickableRecyclerViewAdapter
-import com.fanhl.footprint.ui.base.Listable
-import java.util.*
+import com.fanhl.footprint.R
+import com.fanhl.footprint.model.Record
+import com.fanhl.footprint.ui.base.ListRecyclerViewAdapter
 
-class FootprintAdapter(context: Context, recyclerView: RecyclerView) : ClickableRecyclerViewAdapter<FootprintAdapter.ViewHolder>(context, recyclerView), Listable<Foot> {
-    var list = ArrayList<Foot>()
+class FootprintAdapter(context: Context, recyclerView: RecyclerView) : ListRecyclerViewAdapter<FootprintAdapter.ViewHolder, Record>(context, recyclerView) {
 
     init {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder? {
-        throw UnsupportedOperationException()
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.view_footprint_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
+        holder.bind(list[position])
     }
 
-    override fun getItemCount() = 0
+    class ViewHolder(itemView: View) : ListViewHolder(itemView) {
+        override fun bind(data: Record) {
+            super.bind(data)
 
-    class ViewHolder(itemView: View) : ClickableViewHolder(itemView)
+        }
+    }
 }
-

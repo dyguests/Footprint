@@ -1,10 +1,12 @@
 package com.fanhl.footprint.ui.base
 
-import java.util.*
-
 /**
  * Created by fanhl on 16/5/12.
  */
 interface Listable<T> {
+    val list: List<T>
 
+    fun addItem(item: T)
+    fun addItems(items: List<T>)
+    fun clear()
 }

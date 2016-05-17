@@ -3,6 +3,7 @@ package com.fanhl.footprint.util
 import android.content.Context
 import android.os.Environment
 import com.fanhl.footprint.model.Foot
+import com.fanhl.footprint.model.Record
 import java.io.File
 import java.io.FileWriter
 import java.util.*
@@ -54,5 +55,9 @@ object FileManager {
         val namePrefix = DateUtil.date2str(DateUtil.second2date(list[0].time), DateUtil.FORMAT_LONG_)
         val namePostfix = DateUtil.date2str(DateUtil.second2date(list[list.size - 1].time), DateUtil.FORMAT_hms_)
         return "$namePrefix-$namePostfix.$recordExtensionName"
+    }
+
+    fun getRecords(): List<Record> {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
