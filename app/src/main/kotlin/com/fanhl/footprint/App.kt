@@ -1,7 +1,6 @@
 package com.fanhl.footprint
 
 import android.app.Application
-import android.content.Context
 import com.fanhl.footprint.io.FootprintClient
 
 /**

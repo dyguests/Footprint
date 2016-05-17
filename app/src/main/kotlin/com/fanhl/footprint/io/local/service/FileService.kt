@@ -6,6 +6,14 @@ import com.fanhl.footprint.util.FileManager
 import rx.lang.kotlin.observable
 
 class FileService(context: Context) {
-    fun getRecords() = observable<List<Record>> { FileManager.getRecords() }
-}
+    private var context: Context
 
+    init {
+        this.context = context
+    }
+
+    fun getRecords() = observable<List<Record>> {
+        it.onNext(FileManager.getRecords(context))
+        it.onCompleted()
+    }
+}

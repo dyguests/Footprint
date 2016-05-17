@@ -8,10 +8,10 @@ android {
 
     defaultConfig {
         applicationId "com.fanhl.footprint"
-        minSdkVersion 14
+        minSdkVersion 17
         targetSdkVersion 23
-        versionCode 11
-        versionName "0.2.0"
+        versionCode 12
+        versionName "0.3.1"
     }
     buildTypes {
         release {

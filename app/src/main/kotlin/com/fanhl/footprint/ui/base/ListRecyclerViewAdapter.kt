@@ -32,6 +32,31 @@ abstract class ListRecyclerViewAdapter<CVH : ClickableRecyclerViewAdapter.Clicka
         notifyItemRangeRemoved(0, itemCount)
     }
 
+    fun replaceItems(items: List<ITEM>) {
+        val oldSize = list.size
+        list.clear()
+        list += items
+        val newSize = list.size
+
+        if (newSize == oldSize) {
+            notifyItemRangeChanged(0, oldSize)
+        } else if (newSize > oldSize) {
+            notifyItemRangeChanged(0, oldSize)
+            notifyItemRangeInserted(oldSize, newSize - oldSize)
+        } else {
+            notifyItemRangeChanged(0, newSize)
+            notifyItemRangeRemoved(newSize, oldSize - newSize)
+        }
+    }
+
+
+    operator fun plusAssign(element: ITEM) {
+        addItem(element)
+    }
+
+    operator fun plusAssign(elements: List<ITEM>) {
+        addItems(elements)
+    }
 
     open class ListViewHolder(itemView: View) : ClickableViewHolder(itemView) {
         lateinit var data: Record
@@ -40,8 +65,6 @@ abstract class ListRecyclerViewAdapter<CVH : ClickableRecyclerViewAdapter.Clicka
         }
 
         open fun bind(data: Record) {
-
-
             this.data = data
         }
     }

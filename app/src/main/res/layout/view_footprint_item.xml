@@ -2,18 +2,57 @@
 <android.support.v7.widget.CardView
     style="@style/AppCardView"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/index_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:textSize="40sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/index_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:minWidth="50dp"
+                android:textAlignment="gravity"
+                android:textSize="40sp"
+                tools:text="99"/>
+
+            <TextView
+                android:id="@+id/info_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="5dp"
+                android:textAlignment="gravity"
+                tools:text="2015-08-21 09:10:11 ~ 10:11:12"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/toolbar_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded"
+            tools:visibility="visible">
+
+            <Button
+                android:id="@+id/analysis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/analysis"/>
+        </LinearLayout>
+
     </LinearLayout>
 </android.support.v7.widget.CardView>

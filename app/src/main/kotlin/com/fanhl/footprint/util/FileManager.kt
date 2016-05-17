@@ -21,10 +21,10 @@ object FileManager {
     /**分析文件文件夹*/
     const val ANALYSIS_FOLDER = "Analysis"
 
-    const val recordExtensionName = "txt"//"fpr"
+    const val RECORD_EXTENSION_NAME = "txt"//"fpr"
 
     private fun getExternalDir(context: Context): File {
-        val dir = File(Environment.getExternalStorageDirectory().path +"/"+ PROJECT_FOLDER)
+        val dir = File(Environment.getExternalStorageDirectory().path + "/" + PROJECT_FOLDER)
         if (!dir.exists()) dir.mkdirs()
         return dir
     }
@@ -54,10 +54,15 @@ object FileManager {
     private fun getRecordFileName(list: ArrayList<Foot>): String {
         val namePrefix = DateUtil.date2str(DateUtil.second2date(list[0].time), DateUtil.FORMAT_LONG_)
         val namePostfix = DateUtil.date2str(DateUtil.second2date(list[list.size - 1].time), DateUtil.FORMAT_hms_)
-        return "$namePrefix-$namePostfix.$recordExtensionName"
+        return "$namePrefix-$namePostfix.$RECORD_EXTENSION_NAME"
     }
 
-    fun getRecords(): List<Record> {
-        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    fun getRecords(context: Context) = getRecordDir(context).listFiles()
+            .filter {
+                it.isFile && it.name.endsWith(RECORD_EXTENSION_NAME)
+            }
+            .mapIndexed {
+                index, file ->
+                Record(index + 1, file.name)
+            }
 }

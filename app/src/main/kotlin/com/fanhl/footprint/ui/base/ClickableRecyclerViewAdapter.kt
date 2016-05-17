@@ -3,6 +3,7 @@ package com.fanhl.footprint.ui.base
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.fanhl.footprint.model.Record
 import java.util.*
 
 /**

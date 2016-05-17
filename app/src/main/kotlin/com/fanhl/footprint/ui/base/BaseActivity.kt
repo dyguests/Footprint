@@ -7,5 +7,6 @@ import com.fanhl.footprint.App
  * Created by fanhl on 16/5/5.
  */
 abstract class BaseActivity : AppCompatActivity() {
-    val app by lazy { application as App }
+    val app: App
+        get() = application as App
 }

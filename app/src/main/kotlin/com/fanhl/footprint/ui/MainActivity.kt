@@ -1,6 +1,7 @@
 package com.fanhl.footprint.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.fanhl.footprint.R
@@ -12,6 +13,7 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 class MainActivity : BaseActivity() {
+    val TAG = MainActivity::class.java.simpleName
 
     private val adapter by lazy { FootprintAdapter(this, recycler_view) }
 
@@ -62,11 +64,13 @@ class MainActivity : BaseActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-
+                    adapter.replaceItems(it)
                 }, {
                     swipe_refresh_layout.isRefreshing = false
+                    Log.e(TAG, "refreshData success", it)
                 }, {
                     swipe_refresh_layout.isRefreshing = false
+                    Log.d(TAG, "refreshData success")
                 })
     }
 }

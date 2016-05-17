@@ -13,4 +13,5 @@
     <string name="stop">结束</string>
     <string name="time">时间</string>
     <string name="velocity">速度</string>
+    <string name="analysis">分析</string>
 </resources>
