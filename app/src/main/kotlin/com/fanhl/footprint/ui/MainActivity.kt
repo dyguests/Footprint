@@ -6,10 +6,12 @@ import android.view.Menu
 import android.view.MenuItem
 import com.fanhl.footprint.R
 import com.fanhl.footprint.ui.adapter.FootprintAdapter
+import com.fanhl.footprint.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import rx.lang.kotlin.observable
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val adapter by lazy { FootprintAdapter(this, recycler_view) }
 
@@ -46,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     private fun assignViews() {
         fab.setOnClickListener { RecordActivity.launch(this@MainActivity) }
 
-//        swi
+        swipe_refresh_layout.setOnRefreshListener { refreshData() }
         recycler_view.adapter = adapter
     }
 
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun refreshData() {
+        if (!swipe_refresh_layout.isRefreshing) swipe_refresh_layout.isRefreshing = true
 
     }
 }
